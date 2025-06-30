@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Subskrypcja</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      text-align: center;
+      margin-top: 100px;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin: 5px;
+    }
+    #info {
+      margin-top: 10px;
+      color: green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Zapisz się do newslettera</h1>
+  <input type="email" id="email" placeholder="Twój e-mail">
+  <button onclick="zapisz()">Zapisz się</button>
+  <p id="info"></p>
+
+  <script>
+    function zapisz() {
+      const email = document.getElementById("email").value;
+      const info = document.getElementById("info");
+      if (email.includes("@")) {
+        info.textContent = "Dziękujemy za zapis!";
+      } else {
+        info.textContent = "Podaj poprawny adres e-mail.";
+      }
+    }
+  </script>
+
+</body>
+</html>
