@@ -1,33 +1,32 @@
 <!DOCTYPE html>
-<html lang="pl">
-<head>
-  <meta charset="UTF-8">
-  <title>Subskrypcja</title>
-  <style>
+<html lang="pl"> <!--j.pol-->
+<head> <!--ustawniena strony niewidoczne-->
+  <meta charset="UTF-8"> <!--polskie znaki utf8 musi byc-->
+  <title>Subskrypcja</title><!-- karta przeghladarki tyt-->
+  <style>/*css*/
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
-      text-align: center;
-      margin-top: 100px;
+      font-family: Arial; /*czcionka arial*/
+      background: #d2fdf6; /*customowe niebieskie tło*/
+      text-align: center; /*na środek poziomo*/
+      margin-top: 100px; /* odstęp od góry*/
     }
-    input, button {
-      padding: 10px;
-      font-size: 16px;
-      margin: 5px;
+    input, button {   
+      padding: 10px;  /*  odstęp wewnatrz  */
+      font-size: 20px;  /*  wieksz czcionka  */
+      margin: 5px;   /*   odstęp miedzy elemtami */
     }
     #info {
       margin-top: 10px;
-      color: green;
-      font-weight: bold;
+      color: rgb(52, 173, 48);
     }
   </style>
 </head>
 <body>
 
-  <h1>Zapisz się do newslettera</h1>
-  <input type="email" id="email" placeholder="Twój e-mail">
+  <h1>Zapisz się do newslettera</h1> <!--nagłówek-->
+  <input type="email" id="email" placeholder="Twój e-mail"> <!--type oczekuje id odczyt js placeholder tekst widoczny w pustym polu-->
   <button onclick="zapisz()">Zapisz się</button>
-  <p id="info"></p>
+  <p id="info"> email wpisuj powyżej </p>
 
   <script>
     function zapisz() {
