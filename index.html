@@ -1,37 +1,75 @@
 <!DOCTYPE html>
-<html lang="pl"> <!--j.pol-->
-<head> <!--ustawniena strony niewidoczne-->
-  <meta charset="UTF-8"> <!--polskie znaki utf8 musi byc-->
-  <title>Subskrypcja</title><!-- karta przeghladarki tyt-->
-  <style>/*css*/
+<html lang="pl">
+
+<head>
+  <!--polskie znaki utf8 musi byc-->
+  <meta charset="UTF-8">
+  <!-- karta przeglądarki tyt-->
+  <title>Subskrypcja</title>
+  <!-- To można przerzucić do pliku CSS -->
+  <!-- <link rel="stylesheet" href="styles.css"> -->
+  <style>
+    /*css*/
     body {
-      font-family: Arial; /*czcionka arial*/
-      background: #d2fdf6; /*customowe niebieskie tło*/
-      text-align: center; /*na środek poziomo*/
-      margin-top: 100px; /* odstęp od góry*/
+      font-family: Arial;
+      /*czcionka arial*/
+      /* staramy nie używać się w różnych miejscach losowych czcionek
+       tylko ustalamy jedną lub dwie na cały projekt */
+      background: #d2fdf6;
+      /*customowe białe tło*/
+      text-align: center;
+      /*na środek poziomo*/
+      margin-top: 100px;
+      /* odstęp od góry*/
     }
-    input, button {   
-      padding: 10px;  /*  odstęp wewnatrz  */
-      font-size: 20px;  /*  wieksz czcionka  */
-      margin: 5px;   /*   odstęp miedzy elemtami */
+
+    input,
+    button {
+      padding: 10px;
+      /*  odstęp wewnatrz  */
+      font-size: 20px;
+      /*  wieksz czcionka  */
+      margin: 5px;
+      /*   odstęp miedzy elemtami
+      to daje odstęp dla każdego elementu z każdej strony.
+      Można też ustawić tylko z jednej strony np. margin-top: 10px;
+      ale często stosuje się też grid czy flexbox do układania elementów
+      */
     }
+
     #info {
       margin-top: 10px;
       color: rgb(52, 173, 48);
     }
   </style>
 </head>
+
 <body>
 
-  <h1>Zapisz się do newslettera</h1> <!--nagłówek-->
-  <input type="email" id="email" placeholder="Twój e-mail"> <!--type oczekuje id odczyt js placeholder tekst widoczny w pustym polu-->
-  <button onclick="zapisz()">Zapisz się</button>
+  <h1>Zapisz się do newslettera</h1>
+  <input type="email" id="email" placeholder="Twój e-mail">
+  <!--type oczekuje id odczyt js placeholder tekst widoczny w pustym polu-->
+  <!-- Tak tylko takich danych się nie zapisuje a wysyła. 
+  -- (to ważne bo konwencja nazw ustalana do pracowania w grupie, najczęściej w wielu językach) 
+  -->
+  <button onclick="sendToBackend()">Zapisz się</button>
   <p id="info"> email wpisuj powyżej </p>
-
+  <!-- Skrypt JS można przenieść do pliku zewnętrznego -->
   <script>
-    function zapisz() {
+    function sendToBackend() {
       const email = document.getElementById("email").value;
       const info = document.getElementById("info");
+      // Pobieramy wartość z pola email i element info ale brakuje tu walidacji
+      // czyli sprawdzenia czy email jest poprawny, czy nie jest pusty itp.
+      // W tym przypadku sprawdzamy tylko czy zawiera znak @
+      // W prawdziwej aplikacji trzeba by to zrobić lepiej, np. używając regexu lub HTML5 pattern.
+      if (email === "") {
+        info.textContent = "Proszę wpisać adres e-mail.";
+        return; // Zatrzymujemy dalsze wykonywanie funkcji jeśli pole jest puste
+      }
+      // Sprawdzamy czy email zawiera znak @, to bardzo podstawowa walidacja
+      // Dodatkowo normalnie wysyła sie takie dane na serwer
+      // ale tutaj tylko symulujemy to działanie.
       if (email.includes("@")) {
         info.textContent = "Dziękujemy za zapis!";
       } else {
@@ -41,4 +79,6 @@
   </script>
 
 </body>
+
 </html>
+<!-- tak można to zmieniac i dodawać tutaj używając checkout to pr -->
